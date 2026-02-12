@@ -1,0 +1,21 @@
+# python
+__pycache__/
+*.pyc 
+*.pyo
+*.pyd
+#environment
+nlp/
+# jupyter
+.ipynb_checkpoints/
+# Models
+models/*.pkl
+models/
+# Data
+data/raw/
+data/processed
+
+#logs
+logs/
+*.logs
+
+.DS_Store
