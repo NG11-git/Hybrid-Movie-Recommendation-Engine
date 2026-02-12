@@ -10,19 +10,13 @@ def health_check():
 
 @app.get("/recommend/user/{user_id}", response_model=RecommendationResponse)
 def recommend_user(user_id: int, top_n: int=10):
-    try:
-        recommendation = recommender_service.recommend_for_user(
-            user_id=user_id,
-            top_n=top_n
-        )
-        if not recommendation:
-            raise HTTPException(status_code=404, detail="NO Recommendation Found")
-        
-        return {
-            "user_id": user_id,
-            "recommendation": recommendation
+    recommendation = recommender_service.recommend_for_user(
+        user_id=user_id,
+        top_n=top_n
+    )
 
-        }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    return {
+        "user_id": user_id,
+        "recommendations": recommendation
+    }
         
