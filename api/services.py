@@ -18,14 +18,14 @@ class TMDBServices:
         return title.rsplit("(", 1)[0].strip()
     
     def search_movie(self, title: str):
-        clean_title = self._clean_title[title]
+        clean_title = self._clean_title(title)
 
         if clean_title in self.cache:
             return self.cache[clean_title]
         
         url = f"{BASE_URL}/search/movie"
         params = {
-            "apik_key": self.api_key,
+            "api_key": self.api_key,
             "query": clean_title
         }
 

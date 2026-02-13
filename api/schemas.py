@@ -9,7 +9,7 @@ class MovieSchema(BaseModel):
 
 class RecommendationResponse(BaseModel):
     user_id: int
-    recommendations: List[str]
+    recommendations: List[MovieSchema]
 
 class HealthResponse(BaseModel):
     status: str
