@@ -22,6 +22,10 @@ class ContentBasedRecommender:
         joblib.dump(self.vectorizer, os.path.join(MODEL_PATH, "tfidf_vectorizer.pkl"))
         joblib.dump(self.similarity_matrix, os.path.join(MODEL_PATH, "content_similarity.pkl"))
 
+    def load(self):
+        self.vectorizer = joblib.load(os.path.join(MODEL_PATH,  "tfidf_vectorizer.pkl"))
+        self.similarity_matrix = joblib.load(os.path.join(MODEL_PATH, "content_similarity.pkl"))
+
     def get_similar_movies(self, movie_title, top_n=10):
         idx = self.movies[self.movies['title'] == movie_title].index[0]
 
